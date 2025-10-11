@@ -1,0 +1,50 @@
+import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
+
+export function Hero() {
+  return (
+    <section className="relative h-[600px] lg:h-[700px] w-full overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1755235021007-46868b346577?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwY3JvY2tlcnklMjB0YWJsZXdhcmV8ZW58MXx8fHwxNzYwMTc5NzQxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+        >
+          {/* 
+            INSTRUCTIONS: 
+            1. Download the video from your Google Drive
+            2. Place it in your project's /public folder
+            3. Replace "/crockery-hero.mp4" below with your video filename
+            Example: If your video is named "dining-set.mp4", use "/dining-set.mp4"
+          */}
+          <source src="/crockery-hero.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
+      {/* Content */}
+      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+        <div className="max-w-2xl text-white">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
+            Elegant dining, timeless style
+          </h1>
+          <p className="text-xl sm:text-2xl mb-8 text-white/90 leading-relaxed">
+            Explore our curated selection of handcrafted crockery and tableware, designed to elevate every meal into a memorable experience.
+          </p>
+          <Button 
+            size="lg" 
+            className="bg-white text-foreground hover:bg-white/90 gap-2 text-lg px-8 py-6"
+          >
+            Explore Now
+            <ArrowRight className="w-5 h-5" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
