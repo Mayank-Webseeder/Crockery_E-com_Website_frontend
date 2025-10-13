@@ -11,11 +11,8 @@ export function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
-          
+          className="w-full h-full object-cover"  
         >
-          
-          */}
           <source src="/crockery-hero.mp4" type="video/mp4" />
         </video>
         {/* Overlay for better text readability */}
