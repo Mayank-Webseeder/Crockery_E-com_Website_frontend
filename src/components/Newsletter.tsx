@@ -16,26 +16,28 @@ export function Newsletter() {
       </div>
 
       {/* Content */}
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl lg:text-4xl mb-4 text-white">
-          Join Our Newsletter
-        </h2>
-        <p className="text-lg mb-8 text-white/90">
-          Subscribe to receive updates on new arrivals, special offers, and other discount information.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-          <Input 
-            type="email" 
-            placeholder="Enter your email"
-            className="bg-white text-foreground border-white"
-          />
-          <Button 
-            size="lg"
-            className="whitespace-nowrap bg-white text-foreground hover:bg-white/90"
-          >
-            Subscribe
-          </Button>
+      <div className="relative w-full px-8 lg:px-16 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="mb-4 text-white">
+            Join Our Newsletter
+          </h2>
+          <p className="mb-8 text-white/90">
+            Subscribe to receive updates on new arrivals, special offers, and other discount information.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <Input 
+              type="email" 
+              placeholder="Enter your email"
+              className="bg-white text-foreground border-white"
+            />
+            <Button 
+              size="lg"
+              className="whitespace-nowrap bg-white text-foreground hover:bg-white/90"
+            >
+              Subscribe
+            </Button>
+          </div>
         </div>
       </div>
     </section>

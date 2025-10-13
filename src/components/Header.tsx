@@ -1,65 +1,99 @@
-import { ShoppingCart, Search, Menu } from "lucide-react";
+import { ShoppingBag, Search, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import { Input } from "./ui/input";
 
-export function Header() {
+interface HeaderProps {
+  onCartOpen: () => void;
+  currentPage: string;
+  onNavigate: (page: string) => void;
+}
+
+export function Header({ onCartOpen, currentPage, onNavigate }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const navLinkClass = (page: string) => 
+    `transition-all duration-300 cursor-pointer ${
+      currentPage === page 
+        ? 'text-[#d87f4a] underline underline-offset-4' 
+        : 'hover:text-[#d87f4a] hover:underline underline-offset-4'
+    }`;
+
+  const handleNavClick = (page: string) => {
+    onNavigate(page);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className="w-full bg-background border-b border-border sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top banner - optional promotional message */}
-        <div className="text-center py-2 border-b border-border">
-          <p className="text-sm text-muted-foreground">Free shipping on orders above $50</p>
-        </div>
-        
+      <div className="w-full px-8 lg:px-16">
         {/* Main header */}
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-6">
           {/* Mobile menu button */}
           <button 
             className="lg:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            <Menu className="w-6 h-6" />
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
           {/* Logo/Brand */}
-          <div className="flex-shrink-0">
-            <h1 className="text-2xl tracking-wide">TanaRiri</h1>
+          <div 
+            className="flex-shrink-0 cursor-pointer"
+            onClick={() => handleNavClick("home")}
+          >
+            <h1 className="text-2xl tracking-wide">TanaRíri</h1>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            <a href="#home" className="hover:text-muted-foreground transition-colors">Home</a>
-            <a href="#products" className="hover:text-muted-foreground transition-colors">Products</a>
-            <a href="#about" className="hover:text-muted-foreground transition-colors">About</a>
-            <a href="#journal" className="hover:text-muted-foreground transition-colors">Journal</a>
-            <a href="#contact" className="hover:text-muted-foreground transition-colors">Contact</a>
+            <span onClick={() => handleNavClick("home")} className={navLinkClass("home")}>Home</span>
+            <span onClick={() => handleNavClick("products")} className={navLinkClass("products")}>Products</span>
+            <span onClick={() => handleNavClick("about")} className={navLinkClass("about")}>About</span>
+            <span onClick={() => handleNavClick("journal")} className={navLinkClass("journal")}>Journal</span>
+            <span onClick={() => handleNavClick("contact")} className={navLinkClass("contact")}>Contact</span>
           </nav>
 
           {/* Right side actions */}
-          <div className="flex items-center gap-4">
-            <button className="hover:text-muted-foreground transition-colors">
+          <div className="flex items-center gap-6">
+            <button 
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="hover:text-[#d87f4a] transition-colors"
+            >
               <Search className="w-5 h-5" />
             </button>
-            <button className="hover:text-muted-foreground transition-colors relative">
-              <ShoppingCart className="w-5 h-5" />
-              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                0
-              </span>
+            <button 
+              onClick={onCartOpen}
+              className="flex items-center gap-2 hover:text-[#d87f4a] transition-colors"
+            >
+              <ShoppingBag className="w-5 h-5" />
+              <span className="hidden sm:inline">CART</span>
             </button>
           </div>
         </div>
+
+        {/* Search Bar */}
+        {isSearchOpen && (
+          <div className="pb-4 animate-in slide-in-from-top">
+            <Input 
+              type="search"
+              placeholder="Search products..."
+              className="w-full h-12"
+              autoFocus
+            />
+          </div>
+        )}
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <nav className="lg:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
-              <a href="#home" className="hover:text-muted-foreground transition-colors">Home</a>
-              <a href="#products" className="hover:text-muted-foreground transition-colors">Products</a>
-              <a href="#about" className="hover:text-muted-foreground transition-colors">About</a>
-              <a href="#journal" className="hover:text-muted-foreground transition-colors">Journal</a>
-              <a href="#contact" className="hover:text-muted-foreground transition-colors">Contact</a>
+              <span onClick={() => handleNavClick("home")} className={navLinkClass("home")}>Home</span>
+              <span onClick={() => handleNavClick("products")} className={navLinkClass("products")}>Products</span>
+              <span onClick={() => handleNavClick("about")} className={navLinkClass("about")}>About</span>
+              <span onClick={() => handleNavClick("journal")} className={navLinkClass("journal")}>Journal</span>
+              <span onClick={() => handleNavClick("contact")} className={navLinkClass("contact")}>Contact</span>
             </div>
           </nav>
         )}

@@ -10,7 +10,7 @@ export function CategoryCard({ title, image, onClick }: CategoryCardProps) {
   return (
     <div 
       onClick={onClick}
-      className="group cursor-pointer relative overflow-hidden aspect-[3/4] rounded-sm"
+      className="group cursor-pointer relative overflow-hidden aspect-[3/4]"
     >
       <ImageWithFallback 
         src={image}

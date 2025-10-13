@@ -4,8 +4,8 @@ import { Button } from "./ui/button";
 const journalPosts = [
   {
     title: "Why fewer, better pieces still matter",
-    date: "May 9, 2025", 
-    image: '/Ideas_or_Tips_to_Design_Crockery_Units.webp',
+    date: "May 9, 2025",
+    image: "https://images.unsplash.com/photo-1629374888580-3d67004f0ce6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwdGFibGUlMjBzZXR0aW5nfGVufDF8fHx8MTc2MDE4MTEwN3ww&ixlib=rb-4.1.0&q=80&w=1080"
   },
   {
     title: "Corners, curves, and the geometry of calm",

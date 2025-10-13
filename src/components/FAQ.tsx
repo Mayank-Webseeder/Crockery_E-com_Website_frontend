@@ -30,12 +30,12 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-20 lg:py-32 bg-muted/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-32 bg-background">
+      <div className="w-full px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left side - Title */}
           <div>
-            <h2 className="text-4xl lg:text-5xl leading-tight">
+            <h2 className="leading-tight" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 400, fontSize: '50px' }}>
               Frequently<br />Asked<br /><span className="italic">Questions</span>
             </h2>
           </div>

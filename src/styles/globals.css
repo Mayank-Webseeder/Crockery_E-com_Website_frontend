@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
   --font-size: 16px;
-  --background: #ffffff;
+  --background: #e8e4db;
+  --background-alt: #e8e4db;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
@@ -128,7 +131,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
     letter-spacing: -0.01em;
   }
 }
@@ -139,35 +142,35 @@
 @layer base {
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
     h1 {
-      font-size: var(--text-2xl);
-      font-weight: var(--font-weight-light);
+      font-size: 3.75rem;
+      font-weight: 400;
       line-height: 1.2;
       letter-spacing: -0.02em;
     }
 
     h2 {
-      font-size: var(--text-xl);
-      font-weight: var(--font-weight-light);
-      line-height: 1.3;
+      font-size: 3.75rem;
+      font-weight: 400;
+      line-height: 1.2;
       letter-spacing: -0.02em;
     }
 
     h3 {
-      font-size: var(--text-lg);
-      font-weight: var(--font-weight-normal);
+      font-size: 1.125rem;
+      font-weight: 400;
       line-height: 1.4;
       letter-spacing: -0.01em;
     }
 
     h4 {
       font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
+      font-weight: 400;
       line-height: 1.5;
     }
 
     p {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
+      font-size: 1.0625rem;
+      font-weight: 400;
       line-height: 1.7;
     }
 

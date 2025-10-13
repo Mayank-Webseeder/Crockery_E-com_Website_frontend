@@ -30,8 +30,8 @@ const categories = [
 export function Categories() {
   return (
     <section className="py-16 lg:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl lg:text-4xl mb-12">Shop by category</h2>
+      <div className="w-full px-8 lg:px-16">
+        <h2 className="mb-12">Shop by category</h2>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
           {categories.map((category, index) => (

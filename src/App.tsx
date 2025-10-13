@@ -1,27 +1,49 @@
+import { useState } from "react";
 import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { Categories } from "./components/Categories";
-import { Sustainability } from "./components/Sustainability";
-import { FeaturedProducts } from "./components/FeaturedProducts";
-import { Journal } from "./components/Journal";
-import { FAQ } from "./components/FAQ";
-import { Newsletter } from "./components/Newsletter";
 import { Footer } from "./components/Footer";
+import { CartSidebar } from "./components/CartSidebar";
+import { HomePage } from "./pages/HomePage";
+import { ProductsPage } from "./pages/ProductsPage";
+import { AboutPage } from "./pages/AboutPage";
+import { JournalPage } from "./pages/JournalPage";
+import { ContactPage } from "./pages/ContactPage";
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState("home");
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case "home":
+        return <HomePage />;
+      case "products":
+        return <ProductsPage />;
+      case "about":
+        return <AboutPage />;
+      case "journal":
+        return <JournalPage />;
+      case "contact":
+        return <ContactPage />;
+      default:
+        return <HomePage />;
+    }
+  };
+
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header 
+        onCartOpen={() => setIsCartOpen(true)}
+        currentPage={currentPage}
+        onNavigate={setCurrentPage}
+      />
       <main>
-        <Hero />
-        <Categories />
-        <Sustainability />
-        <FeaturedProducts />
-        <Journal />
-        <FAQ />
-        <Newsletter />
+        {renderPage()}
       </main>
       <Footer />
+      <CartSidebar 
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+      />
     </div>
   );
 }
