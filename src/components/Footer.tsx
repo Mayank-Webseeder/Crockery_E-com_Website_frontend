@@ -1,26 +1,29 @@
-import { Facebook, Instagram, Home } from "lucide-react"; // Corrected: Added Pinterest
+import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
-          
-          <div>
-            {/* Removed inline style for font size and weight, relying on Tailwind classes */}
-            <h3 className="text-2xl mb-4 font-serif" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 400, fontSize: '40px' }}>Handcrafted by <br></br> TanaRíri</h3> {/* Corrected heading and removed <br> */}
-            <p className="text-muted-foreground mb-2">Pilestæde 45, 1st Floor,</p>
-            <p className="text-muted-foreground mb-6">1112 Copenhagen, Denmark</p>
-            <div className="flex gap-4">
-              {/* Ensure these SVG files are in your 'public' folder */}
-              <img src="/fsc-icon.jpg" alt="FSC Certified" className="w-8 h-8" />
-              <img src="/eco-icon.png" alt="Eco Friendly" className="w-8 h-8" />
-            </div>
+    <footer className="bg-background pt-16 pb-8">
+      <div className="w-full px-8 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+          {/* Brand Column */}
+          <div className="lg:col-span-1">
+            <h1 className="mb-6" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 400, fontSize: '30px' }}>Handcrafted by<br />TanaRíri</h1>
+            <div className="space-y-2 text-muted-foreground mb-6">
+              <p>Pilestraede 45, 1st Floor,</p>
+              <p>1112 Copenhagen, Denmark</p>
+              <div className="flex gap-4">
+            {/* Ensure these SVG files are in your 'public' folder */}
+            <img src="/fsc-icon.jpg" alt="FSC Certified" className="w-8 h-8" />
+            <img src="/eco-icon.png" alt="Eco Friendly" className="w-8 h-8" />
           </div>
+            </div>
+            </div>
+            
+            
 
           {/* Collections */}
           <div>
-            <h4 className="mb-4 font-serif">Collections</h4>
+            <h4 className="mb-6">Collections</h4>
             <ul className="space-y-3 text-muted-foreground">
               <li><a href="#" className="hover:text-foreground transition-colors">Products</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">New Arrivals</a></li>
@@ -32,7 +35,7 @@ export function Footer() {
 
           {/* Customer Care */}
           <div>
-            <h4 className="mb-4 font-serif">Customer Care</h4>
+            <h4 className="mb-6">Customer Care</h4>
             <ul className="space-y-3 text-muted-foreground">
               <li><a href="#" className="hover:text-foreground transition-colors">Customer Care</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">Shipping</a></li>
@@ -46,7 +49,7 @@ export function Footer() {
 
           {/* About Us */}
           <div>
-            <h4 className="mb-4 font-serif">About Us</h4>
+            <h4 className="mb-6">About Us</h4>
             <ul className="space-y-3 text-muted-foreground">
               <li><a href="#" className="hover:text-foreground transition-colors">Our Story</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">Certifications</a></li>
@@ -59,26 +62,25 @@ export function Footer() {
 
           {/* Stay Connected */}
           <div>
-            <h4 className="mb-4 font-serif">Stay Connected</h4>
+            <h4 className="mb-6">Stay Connected</h4>
             <p className="text-muted-foreground mb-6">
               Get exclusive updates, design tips, and previews of our newest collections.
             </p>
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/#" className="hover:text-muted-foreground transition-colors">
+              <a href="#" className="hover:text-[#d87f4a] transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://www.facebook.com/" className="hover:text-muted-foreground transition-colors">
+              <a href="#" className="hover:text-[#d87f4a] transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="hover:text-muted-foreground transition-colors">
-                <Home className="w-5 h-5" />
+              <a href="#" className="hover:text-[#d87f4a] transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="#" className="hover:text-[#d87f4a] transition-colors">
+                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>
-        </div>
-
-        <div className="border-t border-border mt-12 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2025 Tanaríri &ndash; WordPress theme by Laboratorw</p>
         </div>
       </div>
     </footer>
