@@ -1,6 +1,7 @@
 import { Sustainability } from "../components/Sustainability";
 import { Features } from "../components/Features";
 import { SectionDivider } from "../components/SectionDivider";
+import { StayInspired } from "../components/StayInspired";
 
 export function AboutPage() {
   return (
@@ -19,6 +20,8 @@ export function AboutPage() {
       <Sustainability />
       <SectionDivider />
       <Features />
+       <SectionDivider />
+            <StayInspired />
     </div>
   );
 }

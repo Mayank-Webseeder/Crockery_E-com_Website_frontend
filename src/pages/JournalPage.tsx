@@ -1,4 +1,5 @@
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { StayInspired } from "../components/StayInspired";
 
 const articles = [
   {
@@ -55,6 +56,8 @@ export function JournalPage() {
           ))}
         </div>
       </div>
+       <SectionDivider />
+        <StayInspired />
     </div>
   );
 }

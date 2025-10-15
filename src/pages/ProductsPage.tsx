@@ -1,6 +1,7 @@
 import { FeaturedProducts } from "../components/FeaturedProducts";
 import { ShopByCategory } from "../components/ShopByCategory";
 import { SectionDivider } from "../components/SectionDivider";
+import { StayInspired } from "../components/StayInspired"; // Import StayInspired
 
 export function ProductsPage() {
   return (
@@ -11,9 +12,12 @@ export function ProductsPage() {
           Discover our curated collection of handcrafted crockery and tableware, designed to bring elegance to every meal.
         </p>
       </div>
-      <FeaturedProducts />
-      <SectionDivider />
       <ShopByCategory />
+      <SectionDivider />
+      <FeaturedProducts />
+      {/* Add StayInspired section at the end */}
+      <SectionDivider />
+      <StayInspired />
     </div>
   );
 }
