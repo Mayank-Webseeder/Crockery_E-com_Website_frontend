@@ -19,11 +19,9 @@ export function ProductsMegaMenu({ onNavigate }) {
     }`;
 
   return (
-    <div className="absolute left-0 right-0 top-full bg-white border border-border shadow-lg z-50">
-      {" "}
-      {/* Changed positioning and width */}
-      <div className="px-8 py-6">
-        <div className="flex gap-8">
+    <div className="bg-white border-b border-border shadow-lg">
+      <div className="max-w-7xl mx-auto px-8 py-6">
+        <div className="flex w-full justify-between gap-8">
           {/* Column 1 - Living Room */}
           <div className="min-w-[120px]">
             <h3 className="mb-3 text-md">Living Room</h3>
@@ -115,42 +113,6 @@ export function ProductsMegaMenu({ onNavigate }) {
                 </span>
               </li>
             </ul>
-
-            <h3 className="mt-4 mb-3 text-md">Lighting</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>
-                <span
-                  onClick={() => handleLinkClick("ceiling")}
-                  className={linkClass("ceiling")}
-                >
-                  Ceiling
-                </span>
-              </li>
-              <li>
-                <span
-                  onClick={() => handleLinkClick("floor-lamps")}
-                  className={linkClass("floor-lamps")}
-                >
-                  Floor Lamps
-                </span>
-              </li>
-              <li>
-                <span
-                  onClick={() => handleLinkClick("table-lamps")}
-                  className={linkClass("table-lamps")}
-                >
-                  Table Lamps
-                </span>
-              </li>
-              <li>
-                <span
-                  onClick={() => handleLinkClick("wall-lamps")}
-                  className={linkClass("wall-lamps")}
-                >
-                  Wall Lamps
-                </span>
-              </li>
-            </ul>
           </div>
 
           {/* Column 4 - Home Decor & Outdoor */}
@@ -175,59 +137,17 @@ export function ProductsMegaMenu({ onNavigate }) {
               </li>
             </ul>
 
-            <h3 className="mt-4 mb-3 text-md">Outdoor</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>
-                <span
-                  onClick={() => handleLinkClick("outdoor-accessories")}
-                  className={linkClass("outdoor-accessories")}
-                >
-                  Accessories
-                </span>
-              </li>
-              <li>
-                <span
-                  onClick={() => handleLinkClick("outdoor-chairs")}
-                  className={linkClass("outdoor-chairs")}
-                >
-                  Chairs
-                </span>
-              </li>
-              <li>
-                <span
-                  onClick={() => handleLinkClick("outdoor-benches")}
-                  className={linkClass("outdoor-benches")}
-                >
-                  Benches
-                </span>
-              </li>
-              <li>
-                <span
-                  onClick={() => handleLinkClick("outdoor-lounge")}
-                  className={linkClass("outdoor-lounge")}
-                >
-                  Lounge
-                </span>
-              </li>
-              <li>
-                <span
-                  onClick={() => handleLinkClick("outdoor-tables")}
-                  className={linkClass("outdoor-tables")}
-                >
-                  Tables
-                </span>
-              </li>
-            </ul>
+            
           </div>
 
           {/* Column 5 - Image "Just In" */}
-          <div className="w-28">
+          <div className="w-24">
             <div
               className="aspect-[3/4] overflow-hidden mb-2 cursor-pointer"
               onClick={() => handleLinkClick("just-in", "products")}
             >
               <ImageWithFallback
-                src="/menu 1.webp"
+                src="/menu 1.jpg"
                 alt="Just In"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
@@ -243,13 +163,13 @@ export function ProductsMegaMenu({ onNavigate }) {
           </div>
 
           {/* Column 6 - Image "Outlet" */}
-          <div className="w-28">
+          <div className="w-24">
             <div
               className="aspect-[3/4] overflow-hidden mb-2 cursor-pointer"
               onClick={() => handleLinkClick("outlet", "products")}
             >
               <ImageWithFallback
-                src="/menu 2.jpeg"
+                src="/menu 2.jpg"
                 alt="Outlet"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />

@@ -1,4 +1,6 @@
 import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Send } from "lucide-react";
 
 export function Footer() {
   return (
@@ -40,12 +42,12 @@ export function Footer() {
               </li>
               <li>
                 <a href="#" className="hover:text-foreground transition-colors">
-                  New Arrivals
+                  Shop By Category
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-foreground transition-colors">
-                  Categories
+                  Shop By Occasions
                 </a>
               </li>
               <li>
@@ -82,16 +84,6 @@ export function Footer() {
               </li>
               <li>
                 <a href="#" className="hover:text-foreground transition-colors">
-                  Product Care
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Warranty
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
                   Terms of Service
                 </a>
               </li>
@@ -105,21 +97,16 @@ export function Footer() {
 
           {/* About Us */}
           <div>
-            <h4 className="mb-4 text-md">About Us</h4>
+            <h4 className="mb-4 text-md">Information</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li>
                 <a href="#" className="hover:text-foreground transition-colors">
-                  Our Story
+                  About Us
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-foreground transition-colors">
                   Certifications
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Journal
                 </a>
               </li>
               <li>
@@ -161,6 +148,19 @@ export function Footer() {
               </a>
             </div>
           </div>
+        </div>
+      </div>
+      {/* Footer Bottom Section (New Content) */}
+      <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500">
+        {/* Left Side: Copyright */}
+        <div className="order-2 sm:order-1 mt-4 sm:mt-0">
+          <span>&copy; TANARIRI 2025, ALL RIGHTS RESERVED</span>
+        </div>
+
+        {/* Right Side: Designed By and ujjawalkeshri */}
+        <div className="order-1 sm:order-2 flex flex-col items-center sm:items-end">
+          <span className="mb-1">DESIGNED BY WEBSEEDER TECHNOLOGY</span>
+          {/* Using 8px for visibility */}
         </div>
       </div>
     </footer>

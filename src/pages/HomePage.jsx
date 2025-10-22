@@ -14,19 +14,20 @@ export function HomePage() {
     <>
       <Hero />
       <ShopByOccasion />
-      <SectionDivider />
+      
       <Sustainability />
-      <SectionDivider />
+      
       <FeaturedProducts />
       <SectionDivider />
       <CollectionEdit />
-      <SectionDivider />
+      
       <ShopByCategory />
       <Features />
-      <SectionDivider />
+      
       <FAQ />
-      <SectionDivider />
+      
       <StayInspired />
+      <SectionDivider />
     </>
   );
 }

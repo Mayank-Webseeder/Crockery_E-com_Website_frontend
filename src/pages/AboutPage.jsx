@@ -1,4 +1,7 @@
 import React from "react";
+import { SectionDivider } from "../components/SectionDivider";
+import { StayInspired } from "../components/StayInspired";
+
 
 export const AboutPage = () => {
   return (
@@ -64,10 +67,13 @@ export const AboutPage = () => {
           Behind every Furnistar piece is a dedicated team of designers, craftspeople, and specialists
           who share a common passion for exceptional furniture.
         </p>
+        <SectionDivider />
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
           {/* Maker profiles go here */}
         </div>
       </section>
+      <StayInspired />
+      <SectionDivider />
     </div>
   );
 };

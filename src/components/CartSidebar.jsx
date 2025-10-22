@@ -1,21 +1,17 @@
+// src/components/CartSidebar.jsx
 import { X, Minus, Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { cn } from "./ui/utils";
 import { useCart } from "../context/CartContext";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { Link } from "react-router-dom"; // ✨ Import the Link component
 
 export function CartSidebar({ isOpen, onClose }) {
   const { cartItems, updateQuantity, removeFromCart } = useCart();
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const isEmpty = cartItems.length === 0;
-  const shippingMessage = "Free shipping will be applied at checkout!";
-
-const handleBrowseClick = () => {
-    if (onNavigate) {
-      onNavigate("products");
-    }
-  };
+  const shippingMessage = "Free shipping will be applied at checkout!"; <br/>
 
   return (
     <>
@@ -31,7 +27,6 @@ const handleBrowseClick = () => {
       {/* Sidebar */}
       <div
         className={cn(
-          // THIS IS THE FIX: Explicitly set max-width for larger screens.
           "fixed right-0 top-0 h-full w-screen max-w-md bg-white shadow-xl z-50 transition-transform duration-300 ease-in-out flex flex-col",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
@@ -69,11 +64,11 @@ const handleBrowseClick = () => {
             <p className="text-sm text-gray-500 mb-6">
               Browse our store, find products, and happy shopping!
             </p>
-            <Button
-              className="bg-black text-white hover:bg-black/90 px-6 py-3"
-              onClick={handleBrowseClick}
-            >
-              Browse products
+            {/* ✨ Updated Button to use Link for navigation */}
+            <Button asChild className="bg-black text-white hover:bg-black/90 px-6 py-3">
+              <Link to="/products" onClick={onClose}>
+                Browse products
+              </Link>
             </Button>
           </div>
         ) : (
@@ -121,10 +116,14 @@ const handleBrowseClick = () => {
             <div className="p-6 border-t bg-gray-50 space-y-4">
               <p className="text-center text-sm text-gray-600 mb-2">{shippingMessage}</p>
               <div className="flex justify-between items-center text-md font-medium">
+                
                 <span>Subtotal</span>
                 <span>${subtotal.toFixed(2)}</span>
+                
               </div>
+              <br/>
               <p className="text-xs text-muted-foreground text-center"><br />Shipping, taxes, and discounts calculated at checkout.<br /></p>
+              <br/>
               <div className="flex flex-col gap-3">
                 <Button variant="outline" className="w-full py-3 h-auto border-black">View cart</Button>
                 <Button className="w-full bg-[#d87f4a] text-white hover:bg-[#b86a3d] py-3 h-auto">Checkout</Button>
@@ -136,4 +135,3 @@ const handleBrowseClick = () => {
     </>
   );
 }
-
