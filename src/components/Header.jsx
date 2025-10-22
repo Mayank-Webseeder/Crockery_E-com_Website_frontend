@@ -5,28 +5,28 @@ import { ProductsMegaMenu } from "./ProductsMegaMenu";
 import { cn } from "./ui/utils";
 import { useCart } from "../context/CartContext";
 import { ProfileDropdown } from './ProfileDropdown';
-import { useNavigate, useLocation } from 'react-router-dom'; // ✨ Import useNavigate and useLocation
+import { useNavigate, useLocation } from 'react-router-dom';
 
-export function Header({ onCartOpen }) { // Removed currentPage, onNavigate props
+export function Header({ onCartOpen }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
   const { totalItems } = useCart();
 
-  const navigate = useNavigate(); // Initialize useNavigate hook
-  const location = useLocation(); // Initialize useLocation hook
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const navLinkClass = (path) => // Changed 'page' to 'path'
+  const navLinkClass = (path) =>
     `transition-all duration-300 cursor-pointer whitespace-nowrap ${
-      location.pathname === path // Use location.pathname for active link styling
+      location.pathname === path
         ? "text-[#d87f4a] underline underline-offset-4"
         : "hover:text-[#d87f4a] hover:underline underline-offset-4"
     }`;
 
-  const handleNavClick = (path) => { // Changed 'page' to 'path'
-    navigate(path); // Use navigate to change the route
+  const handleNavClick = (path) => {
+    navigate(path);
     setIsMobileMenuOpen(false);
-    if (path !== "/products") { // Adjust path for products
+    if (path !== "/products") {
       setIsProductsMenuOpen(false);
     }
   };
@@ -48,7 +48,7 @@ export function Header({ onCartOpen }) { // Removed currentPage, onNavigate prop
             </button>
             <div
               className="flex-shrink-0 cursor-pointer"
-              onClick={() => handleNavClick("/")} // Navigate to home path
+              onClick={() => handleNavClick("/")}
             >
               <img
                 src="/TanaRiri-Logo 2.png"
@@ -59,8 +59,7 @@ export function Header({ onCartOpen }) { // Removed currentPage, onNavigate prop
           </div>
 
           {/* Centered Navigation (Desktop) */}
-
-          <nav className="hidden lg:flex items-center justify-center gap-6 flex-1">
+          <nav className="hidden lg:flex items-center justify-center gap-8 flex-1 absolute left-1/2 -translate-x-1/2">
             <span onClick={() => handleNavClick("/")} className={navLinkClass("/")}>Home</span>
             <span onClick={() => handleNavClick("/products")} className={navLinkClass("/products")} onMouseEnter={() => setIsProductsMenuOpen(true)}>Products</span>
             <span onClick={() => handleNavClick("/about")} className={navLinkClass("/about")}>About</span>
@@ -109,7 +108,6 @@ export function Header({ onCartOpen }) { // Removed currentPage, onNavigate prop
           </nav>
         )}
 
-        {/* Pass handleNavClick to ProductsMegaMenu if it needs to navigate */}
         {isProductsMenuOpen && <div className="absolute top-full left-0 w-full"><ProductsMegaMenu onNavigate={handleNavClick} /></div>}
       </div>
     </header>

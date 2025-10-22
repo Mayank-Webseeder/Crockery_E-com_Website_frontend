@@ -72,24 +72,7 @@ export function ProfileDropdown() {
                 Wishlist
               </Link>
             </li>
-            <li>
-              <Link to="/rewards" className="flex items-center gap-4 px-6 py-3 hover:text-[#d87f4a] hover:underline text-sm text-gray-800 hover:bg-gray-50" style={{
-                fontFamily: "Playfair Display, serif",
-                fontWeight: 400,
-                fontSize: "15px",
-              }}>
-                Rewards
-              </Link>
-            </li>
-            <li>
-              <Link to="/gift-cards" className="flex items-center gap-4 px-6 py-3 hover:text-[#d87f4a] hover:underline text-sm text-gray-800 hover:bg-gray-50" style={{
-                fontFamily: "Playfair Display, serif",
-                fontWeight: 400,
-                fontSize: "15px",
-              }}>
-                Gift Cards
-              </Link>
-            </li>
+            
             {/* ✨ Login link added back to the list */}
             <li className="border-t border-gray-100 mt-2 pt-2">
               <Link to="/login" className="flex items-center gap-4 px-6 py-3 hover:text-[#d87f4a] hover:underline text-sm text-gray-800 hover:bg-gray-50" style={{

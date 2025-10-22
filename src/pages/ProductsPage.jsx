@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { ProductCard } from "../components/ProductCard";
 import { StayInspired } from "../components/StayInspired";
@@ -159,12 +159,21 @@ export function ProductsPage() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 15; // Set to 15 for 3 rows of 5 products
+  const productsSectionRef = useRef(null); // Create a ref
 
   const gridClass = {
     list: "grid-cols-1",
     grid2: "grid-cols-1 md:grid-cols-2",
     grid3: "grid-cols-1 md:grid-cols-3 lg:grid-cols-5",
   }[viewMode];
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    if (productsSectionRef.current) {
+      productsSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    // In a real app, you would fetch new products for the selected page here
+  };
 
   const sortedProducts = useMemo(() => {
     const sorted = [...products];
@@ -225,6 +234,13 @@ export function ProductsPage() {
       </div>
 
       {/* Products Section */}
+      <div ref={productsSectionRef} className="w-full px-8 lg:px-16 py-16 scroll-mt-20">
+        {/* Header */}
+        <div className="mb-12">
+          <h2 className="mb-2">Products</h2>
+          <p className="text-muted-foreground">15 of 78 results</p>
+        </div>
+      
       <div className="w-full px-4 lg:px-8 py-8">
         {/* Filters and View Options */}
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
@@ -323,7 +339,7 @@ export function ProductsPage() {
           {/* Previous Button */}
           {currentPage > 1 && (
             <button
-              onClick={() => setCurrentPage(currentPage - 1)}
+              onClick={() => handlePageChange(currentPage - 1)}
               className="px-4 h-10 border border-border hover:bg-muted transition-colors flex items-center justify-center gap-2"
             >
               ← Previous
@@ -334,7 +350,7 @@ export function ProductsPage() {
           {[...Array(totalPages)].map((_, i) => (
             <button
               key={i}
-              onClick={() => setCurrentPage(i + 1)}
+              onClick={() => handlePageChange(i + 1)}
               className={`w-10 h-10 flex items-center justify-center transition-colors ${
                 currentPage === i + 1
                   ? "bg-black text-white"
@@ -348,14 +364,15 @@ export function ProductsPage() {
           {/* Next Button */}
           {currentPage < totalPages && (
             <button
-              onClick={() => setCurrentPage(currentPage + 1)}
+              onClick={() => handlePageChange(currentPage + 1)}
               className="px-4 h-10 border border-border hover:bg-muted transition-colors flex items-center justify-center gap-2"
             >
               Next →
             </button>
           )}
         </div>
-      </div>
+      </div> {/* This closes the div that contains filters, grid, and pagination */}
+      </div> {/* Add this closing div for the productsSectionRef div */}
 
       <FiltersSidebar
         isOpen={isFiltersOpen}

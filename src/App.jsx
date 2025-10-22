@@ -15,6 +15,7 @@ import { ProfilePage } from './pages/ProfilePage';
 import { OrdersPage } from './pages/OrdersPage';
 import { LostPasswordPage } from './pages/LostPasswordPage';
 import './index.css';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export default function App() {
   const [isFiltersSidebarOpen, setIsFiltersSidebarOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function App() {
   return (
     <CartProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen flex flex-col">
           <Header
             onCartOpen={handleCartOpen}

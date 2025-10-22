@@ -4,11 +4,14 @@ import { useState } from "react";
 export function ProductsMegaMenu({ onNavigate }) {
   const [activeLink, setActiveLink] = useState(null);
 
-  const handleLinkClick = (link, page) => {
+  // Modified handleLinkClick to accept a category and construct the path
+  const handleLinkClick = (link, category = null) => {
     setActiveLink(link);
-    if (page) {
-      onNavigate(page);
+    let path = "/products"; // Always navigate to the products page
+    if (category) {
+      path += `?category=${category}`; // Add category as a query parameter
     }
+    onNavigate(path); // Call onNavigate with the constructed path
   };
 
   const linkClass = (link) =>
@@ -28,7 +31,7 @@ export function ProductsMegaMenu({ onNavigate }) {
             <ul className="space-y-2 text-muted-foreground">
               <li>
                 <span
-                  onClick={() => handleLinkClick("armchairs")}
+                  onClick={() => handleLinkClick("armchairs", "armchairs")} // Pass category
                   className={linkClass("armchairs")}
                 >
                   Armchairs
@@ -36,7 +39,7 @@ export function ProductsMegaMenu({ onNavigate }) {
               </li>
               <li>
                 <span
-                  onClick={() => handleLinkClick("coffee-tables")}
+                  onClick={() => handleLinkClick("coffee-tables", "coffee-tables")} // Pass category
                   className={linkClass("coffee-tables")}
                 >
                   Coffee Tables
@@ -44,7 +47,7 @@ export function ProductsMegaMenu({ onNavigate }) {
               </li>
               <li>
                 <span
-                  onClick={() => handleLinkClick("sideboards")}
+                  onClick={() => handleLinkClick("sideboards", "sideboards")} // Pass category
                   className={linkClass("sideboards")}
                 >
                   Sideboards
@@ -52,7 +55,7 @@ export function ProductsMegaMenu({ onNavigate }) {
               </li>
               <li>
                 <span
-                  onClick={() => handleLinkClick("sofas")}
+                  onClick={() => handleLinkClick("sofas", "sofas")} // Pass category
                   className={linkClass("sofas")}
                 >
                   Sofas
@@ -67,7 +70,7 @@ export function ProductsMegaMenu({ onNavigate }) {
             <ul className="space-y-2 text-muted-foreground">
               <li>
                 <span
-                  onClick={() => handleLinkClick("beds")}
+                  onClick={() => handleLinkClick("beds", "beds")} // Pass category
                   className={linkClass("beds")}
                 >
                   Beds
@@ -75,7 +78,7 @@ export function ProductsMegaMenu({ onNavigate }) {
               </li>
               <li>
                 <span
-                  onClick={() => handleLinkClick("nightstands")}
+                  onClick={() => handleLinkClick("nightstands", "nightstands")} // Pass category
                   className={linkClass("nightstands")}
                 >
                   Nightstands
@@ -83,7 +86,7 @@ export function ProductsMegaMenu({ onNavigate }) {
               </li>
               <li>
                 <span
-                  onClick={() => handleLinkClick("wardrobes")}
+                  onClick={() => handleLinkClick("wardrobes", "wardrobes")} // Pass category
                   className={linkClass("wardrobes")}
                 >
                   Wardrobes
@@ -98,7 +101,7 @@ export function ProductsMegaMenu({ onNavigate }) {
             <ul className="space-y-2 text-muted-foreground">
               <li>
                 <span
-                  onClick={() => handleLinkClick("benches")}
+                  onClick={() => handleLinkClick("benches", "benches")} // Pass category
                   className={linkClass("benches")}
                 >
                   Benches
@@ -106,7 +109,7 @@ export function ProductsMegaMenu({ onNavigate }) {
               </li>
               <li>
                 <span
-                  onClick={() => handleLinkClick("dining-chairs")}
+                  onClick={() => handleLinkClick("dining-chairs", "dining-chairs")} // Pass category
                   className={linkClass("dining-chairs")}
                 >
                   Dining Chairs
@@ -121,7 +124,7 @@ export function ProductsMegaMenu({ onNavigate }) {
             <ul className="space-y-2 text-muted-foreground">
               <li>
                 <span
-                  onClick={() => handleLinkClick("mirrors")}
+                  onClick={() => handleLinkClick("mirrors", "mirrors")} // Pass category
                   className={linkClass("mirrors")}
                 >
                   Mirrors
@@ -129,22 +132,20 @@ export function ProductsMegaMenu({ onNavigate }) {
               </li>
               <li>
                 <span
-                  onClick={() => handleLinkClick("rugs")}
+                  onClick={() => handleLinkClick("rugs", "rugs")} // Pass category
                   className={linkClass("rugs")}
                 >
                   Rugs
                 </span>
               </li>
             </ul>
-
-            
           </div>
 
           {/* Column 5 - Image "Just In" */}
           <div className="w-24">
             <div
               className="aspect-[3/4] overflow-hidden mb-2 cursor-pointer"
-              onClick={() => handleLinkClick("just-in", "products")}
+              onClick={() => handleLinkClick("just-in", "just-in")} // Pass category
             >
               <ImageWithFallback
                 src="/menu 1.jpg"
@@ -156,7 +157,7 @@ export function ProductsMegaMenu({ onNavigate }) {
               className={`text-center cursor-pointer text-sm ${linkClass(
                 "just-in-link"
               )}`}
-              onClick={() => handleLinkClick("just-in-link", "products")}
+              onClick={() => handleLinkClick("just-in-link", "just-in")} // Pass category
             >
               Just In
             </h3>
@@ -166,7 +167,7 @@ export function ProductsMegaMenu({ onNavigate }) {
           <div className="w-24">
             <div
               className="aspect-[3/4] overflow-hidden mb-2 cursor-pointer"
-              onClick={() => handleLinkClick("outlet", "products")}
+              onClick={() => handleLinkClick("outlet", "outlet")} // Pass category
             >
               <ImageWithFallback
                 src="/menu 2.jpg"
@@ -178,7 +179,7 @@ export function ProductsMegaMenu({ onNavigate }) {
               className={`text-center cursor-pointer text-sm ${linkClass(
                 "outlet-link"
               )}`}
-              onClick={() => handleLinkClick("outlet-link", "products")}
+              onClick={() => handleLinkClick("outlet-link", "outlet")} // Pass category
             >
               Outlet
             </h3>
