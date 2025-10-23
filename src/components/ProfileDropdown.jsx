@@ -20,7 +20,7 @@ export function ProfileDropdown() {
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <Link to={isLoggedIn ? "/profile" : "/login"} className="flex items-center gap-1.5 cursor-pointer p-2 rounded-md hover:text-[#d87f4a] hover:bg-gray-100/80 transition-colors">
+      <div className="flex items-center gap-1.5 cursor-pointer p-2 rounded-md hover:text-[#d87f4a] hover:bg-gray-100/80 transition-colors">
         <User className="w-5 h-5" />
         <span className="text-sm font-medium">{isLoggedIn ? "Account" : "Login"}</span>
         <ChevronDown
@@ -28,7 +28,7 @@ export function ProfileDropdown() {
             isOpen ? 'rotate-180' : ''
           }`}
         />
-      </Link>
+      </div>
 
       {isOpen && (
         <div className="absolute top-full right-0 mt-1 w-64 bg-white shadow-xl rounded-lg overflow-hidden z-30 border border-gray-200">
