@@ -13,8 +13,11 @@ import {
 } from "../components/ui/select";
 import { Button } from "../components/ui/button";
 import { SlidersHorizontal, LayoutGrid, Grid3x3 } from "lucide-react";
+import { allProducts as products } from "../data/products"; // ✨ CORRECT: Using central product data
 
 // --- Data ---
+// Note: The large 'products' array has been removed from here and is now imported above.
+
 const categoryImages = [
   {
     title: "Dinnerware Collection",
@@ -48,118 +51,13 @@ const categoryImages = [
   },
 ];
 
-// ✨ NEW: Expanded and diversified product list for 6 full pages
-const products = [
-  // Page 1
-  { id: 1, name: "Ivory Artisan Bowl", price: 290.0, image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=800", hoverImage: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800", badge: "FEATURED" },
-  { id: 2, name: "Classic Ceramic Plate", price: 475.0, image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800", hoverImage: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800" },
-  { id: 3, name: "Minimalist Tea Cup", price: 199.0, image: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=800", hoverImage: "https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=800", discount: "-15%" },
-  { id: 4, name: "Elegant Porcelain Set", price: 599.0, image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800", hoverImage: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800" },
-  { id: 5, name: "Rustic Glazed Dish", price: 150.0, image: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=800", hoverImage: "https://images.unsplash.com/photo-1495433324511-bf8e92934d90?w=800" },
-  { id: 6, name: "Complete Dinner Set", price: 320.0, image: "https://images.unsplash.com/photo-1584990347449-3ec4c0a8f861?w=800", hoverImage: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800", isNew: true },
-  { id: 7, name: "Earthy Stoneware Mug", price: 425.0, image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800", hoverImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800" },
-  { id: 8, name: "Antique Vase Trio", price: 180.0, image: "https://images.unsplash.com/photo-1587974928442-77dc3e0dba72?w=800", hoverImage: "https://images.unsplash.com/photo-1581858870852-5d32b7d523c7?w=800" },
-  { id: 9, name: "Sleek Modern Plates", price: 265.0, image: "https://images.unsplash.com/photo-1574770118503-13d535dd1b5b?w=800", hoverImage: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800" },
-  { id: 10, name: "Large Terracotta Planter", price: 390.0, image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800", hoverImage: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800" },
-  { id: 11, name: "Ornate Candle Holders", price: 95.0, image: "https://images.unsplash.com/photo-1588200908342-23b585c03e26?w=800", hoverImage: "https://images.unsplash.com/photo-1584990347449-3ec4c0a8f861?w=800" },
-  { id: 12, name: "Deep Glazed Soup Bowl", price: 125.0, image: "https://images.unsplash.com/photo-1544441892-794166f1e3be?w=800", hoverImage: "https://images.unsplash.com/photo-1533167649158-6d508895b680?w=800" },
-  { id: 13, name: "Fine Porcelain Tea Set", price: 145.0, image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800", hoverImage: "https://images.unsplash.com/photo-1581858870852-5d32b7d523c7?w=800", isNew: true },
-  { id: 14, name: "Azure Handpainted Plate", price: 210.0, image: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=800", hoverImage: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800" },
-  { id: 15, name: "Marble Serving Tray", price: 89.0, image: "https://images.unsplash.com/photo-1565083222079-35801f57fc60?w=800", hoverImage: "https://images.unsplash.com/photo-1594755400810-c9a380f6e901?w=800", isNew: true },
-
-  // Page 2
-  { id: 16, name: "Matte Black Bowl", price: 310.0, image: "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800", hoverImage: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800", badge: "POPULAR" },
-  { id: 17, name: "Pastel Pink Dinner Plate", price: 495.0, image: "https://images.unsplash.com/photo-1620626309485-6905d6a2c146?w=800", hoverImage: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=800" },
-  { id: 18, name: "Espresso Cup & Saucer", price: 215.0, image: "https://images.unsplash.com/photo-1511920183353-3c9c35b372e3?w=800", hoverImage: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=800" },
-  { id: 19, name: "Fluted Porcelain Bowl", price: 620.0, image: "https://images.unsplash.com/photo-1585338894166-56356411e25d?w=800", hoverImage: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800" },
-  { id: 20, name: "Wooden Serving Platter", price: 175.0, image: "https://images.unsplash.com/photo-1604569649132-13b31c1252a1?w=800", hoverImage: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=800" },
-  { id: 21, name: "Family Dinner Set (24pc)", price: 350.0, image: "https://images.unsplash.com/photo-1556909115-393a61c7bf4c?w=800", hoverImage: "https://images.unsplash.com/photo-1584990347449-3ec4c0a8f861?w=800", isNew: true },
-  { id: 22, name: "Two-Tone Stoneware Mug", price: 450.0, image: "https://images.unsplash.com/photo-1617886922820-2415543c350a?w=800", hoverImage: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800" },
-  { id: 23, name: "Glass Bud Vase Set", price: 195.0, image: "https://images.unsplash.com/photo-1603832042294-08f3118a1a4c?w=800", hoverImage: "https://images.unsplash.com/photo-1587974928442-77dc3e0dba72?w=800" },
-  { id: 24, name: "Square Modern Plates", price: 285.0, image: "https://images.unsplash.com/photo-1621228228312-a1b4d081b7e8?w=800", hoverImage: "https://images.unsplash.com/photo-1574770118503-13d535dd1b5b?w=800" },
-  { id: 25, name: "Hanging Terracotta Planter", price: 410.0, image: "https://images.unsplash.com/photo-1591323638421-5517a6a4c26b?w=800", hoverImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800" },
-  { id: 26, name: "Geometric Candle Holders", price: 115.0, image: "https://images.unsplash.com/photo-1618512496248-6d8633e8d5f6?w=800", hoverImage: "https://images.unsplash.com/photo-1588200908342-23b585c03e26?w=800", discount: "-10%" },
-  { id: 27, name: "Ramen Noodle Bowl", price: 140.0, image: "https://images.unsplash.com/photo-1607374823293-9c5c2a1b9a1d?w=800", hoverImage: "https://images.unsplash.com/photo-1544441892-794166f1e3be?w=800" },
-  { id: 28, name: "Japanese Tea Pot", price: 165.0, image: "https://images.unsplash.com/photo-1604315237812-4c4a4f2c5e7b?w=800", hoverImage: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800", isNew: true },
-  { id: 29, name: "Floral Handpainted Plate", price: 230.0, image: "https://images.unsplash.com/photo-1558717614-61c1682b414f?w=800", hoverImage: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=800" },
-  { id: 30, name: "Slate Serving Board", price: 99.0, image: "https://images.unsplash.com/photo-1549488344-cbb6c144a469?w=800", hoverImage: "https://images.unsplash.com/photo-1565083222079-35801f57fc60?w=800" },
-
-  // Page 3
-  { id: 31, name: "Deep Blue Serving Bowl", price: 325.0, image: "https://images.unsplash.com/photo-1593344381186-069a53856216?w=800", hoverImage: "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800", badge: "BESTSELLER" },
-  { id: 32, name: "Speckled Dinner Plate", price: 510.0, image: "https://images.unsplash.com/photo-1617997579789-540788d56bcf?w=800", hoverImage: "https://images.unsplash.com/photo-1620626309485-6905d6a2c146?w=800" },
-  { id: 33, name: "Glass Tea Mug", price: 220.0, image: "https://images.unsplash.com/photo-1597481944112-2fe68c12a8a1?w=800", hoverImage: "https://images.unsplash.com/photo-1511920183353-3c9c35b372e3?w=800" },
-  { id: 34, name: "Gold-Trimmed Bowl Set", price: 650.0, image: "https://images.unsplash.com/photo-1606700013838-3486a43876e9?w=800", hoverImage: "https://images.unsplash.com/photo-1585338894166-56356411e25d?w=800" },
-  { id: 35, name: "Acacia Wood Salad Bowl", price: 185.0, image: "https://images.unsplash.com/photo-1515573406215-7e1e62c2f17e?w=800", hoverImage: "https://images.unsplash.com/photo-1604569649132-13b31c1252a1?w=800" },
-  { id: 36, name: "Stoneware Dinner Set", price: 380.0, image: "https://images.unsplash.com/photo-1590642845347-8a620b7f64e2?w=800", hoverImage: "https://images.unsplash.com/photo-1556909115-393a61c7bf4c?w=800", isNew: true },
-  { id: 37, name: "Tall Ceramic Mug", price: 470.0, image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=800", hoverImage: "https://images.unsplash.com/photo-1617886922820-2415543c350a?w=800" },
-  { id: 38, name: "Modernist Flower Vase", price: 210.0, image: "https://images.unsplash.com/photo-1507149833265-60c372daea22?w=800", hoverImage: "https://images.unsplash.com/photo-1603832042294-08f3118a1a4c?w=800" },
-  { id: 39, name: "Organic Shape Plates", price: 305.0, image: "https://images.unsplash.com/photo-1596701955877-331c26189569?w=800", hoverImage: "https://images.unsplash.com/photo-1621228228312-a1b4d081b7e8?w=800" },
-  { id: 40, name: "White Ceramic Planter", price: 430.0, image: "https://images.unsplash.com/photo-1453946610015-188da02a3a5a?w=800", hoverImage: "https://images.unsplash.com/photo-1591323638421-5517a6a4c26b?w=800" },
-  { id: 41, name: "Copper Candle Holders", price: 130.0, image: "https://images.unsplash.com/photo-1616140449491-1774314c4424?w=800", hoverImage: "https://images.unsplash.com/photo-1618512496248-6d8633e8d5f6?w=800" },
-  { id: 42, name: "Pasta Bowl Set", price: 155.0, image: "https://images.unsplash.com/photo-1585237623377-5095d10b7d60?w=800", hoverImage: "https://images.unsplash.com/photo-1607374823293-9c5c2a1b9a1d?w=800" },
-  { id: 43, name: "Elegant Tea Canister", price: 180.0, image: "https://images.unsplash.com/photo-1594631252845-38278f654b41?w=800", hoverImage: "https://images.unsplash.com/photo-1604315237812-4c4a4f2c5e7b?w=800" },
-  { id: 44, "name": "Geometric Painted Plate", "price": 245.0, "image": "https://images.unsplash.com/photo-1558717614-61c1682b414f?w=800", hoverImage: "https://images.unsplash.com/photo-1558717614-61c1682b414f?w=800" },
-  { id: 45, "name": "Bamboo Serving Utensils", "price": 79.0, "image": "https://images.unsplash.com/photo-1622225339310-858844445348?w=800", hoverImage: "https://images.unsplash.com/photo-1549488344-cbb6c144a469?w=800", discount: "-20%" },
-  
-  // Page 4
-  { id: 46, name: "Shallow Pasta Bowl", price: 295.0, image: "https://images.unsplash.com/photo-1585237623377-5095d10b7d60?w=800", hoverImage: "https://images.unsplash.com/photo-1593344381186-069a53856216?w=800", isNew: true },
-  { id: 47, name: "Charcoal Dinner Plate", price: 480.0, image: "https://images.unsplash.com/photo-1565895405137-3ca29db34a58?w=800", hoverImage: "https://images.unsplash.com/photo-1617997579789-540788d56bcf?w=800" },
-  { id: 48, name: "Hand-thrown Coffee Mug", price: 250.0, image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=800", hoverImage: "https://images.unsplash.com/photo-1597481944112-2fe68c12a8a1?w=800" },
-  { id: 49, name: "Minimalist Bowl Collection", price: 680.0, image: "https://images.unsplash.com/photo-1593344381186-069a53856216?w=800", hoverImage: "https://images.unsplash.com/photo-1606700013838-3486a43876e9?w=800" },
-  { id: 50, name: "Live-Edge Wood Board", price: 190.0, image: "https://images.unsplash.com/photo-1549488344-cbb6c144a469?w=800", hoverImage: "https://images.unsplash.com/photo-1515573406215-7e1e62c2f17e?w=800" },
-  { id: 51, name: "Coastal Dinnerware Set", price: 395.0, image: "https://images.unsplash.com/photo-1621228228312-a1b4d081b7e8?w=800", hoverImage: "https://images.unsplash.com/photo-1590642845347-8a620b7f64e2?w=800", badge: "NEW" },
-  { id: 52, name: "Wide-Mouth Ceramic Mug", price: 460.0, image: "https://images.unsplash.com/photo-1617886922820-2415543c350a?w=800", hoverImage: "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=800" },
-  { id: 53, name: "Smoked Glass Vase", price: 225.0, image: "https://images.unsplash.com/photo-1603832042294-08f3118a1a4c?w=800", hoverImage: "https://images.unsplash.com/photo-1507149833265-60c372daea22?w=800" },
-  { id: 54, name: "Matte Finish Plate Set", price: 315.0, image: "https://images.unsplash.com/photo-1596701955877-331c26189569?w=800", hoverImage: "https://images.unsplash.com/photo-1596701955877-331c26189569?w=800" },
-  { id: 55, name: "Cylindrical Plant Pot", price: 440.0, image: "https://images.unsplash.com/photo-1591323638421-5517a6a4c26b?w=800", hoverImage: "https://images.unsplash.com/photo-1453946610015-188da02a3a5a?w=800" },
-  { id: 56, name: "Taper Candle Holder Set", price: 140.0, image: "https://images.unsplash.com/photo-1618512496248-6d8633e8d5f6?w=800", hoverImage: "https://images.unsplash.com/photo-1616140449491-1774314c4424?w=800" },
-  { id: 57, name: "Deep Cereal Bowl", price: 160.0, image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=800", hoverImage: "https://images.unsplash.com/photo-1585237623377-5095d10b7d60?w=800" },
-  { id: 58, name: "French Press Coffee Maker", price: 350.0, image: "https://images.unsplash.com/photo-1563884074242-a72382f4d6d7?w=800", hoverImage: "https://images.unsplash.com/photo-1594631252845-38278f654b41?w=800" },
-  { id: 59, name: "Abstract Design Plate", price: 260.0, image: "https://images.unsplash.com/photo-1574770118503-13d535dd1b5b?w=800", hoverImage: "https://images.unsplash.com/photo-1558717614-61c1682b414f?w=800", discount: "-5%" },
-  { id: 60, name: "Cheese Knife Set", price: 110.0, image: "https://images.unsplash.com/photo-1573555234562-395a123c51f4?w=800", hoverImage: "https://images.unsplash.com/photo-1622225339310-858844445348?w=800" },
-
-  // Page 5
-  { id: 61, name: "Small Condiment Bowl", price: 75.0, image: "https://images.unsplash.com/photo-1606700013838-3486a43876e9?w=800", hoverImage: "https://images.unsplash.com/photo-1585237623377-5095d10b7d60?w=800" },
-  { id: 62, name: "Round Serving Platter", price: 250.0, image: "https://images.unsplash.com/photo-1621228228312-a1b4d081b7e8?w=800", hoverImage: "https://images.unsplash.com/photo-1515573406215-7e1e62c2f17e?w=800" },
-  { id: 63, name: "Glazed Tea Pot", price: 180.0, image: "https://images.unsplash.com/photo-1604315237812-4c4a4f2c5e7b?w=800", hoverImage: "https://images.unsplash.com/photo-1563884074242-a72382f4d6d7?w=800" },
-  { id: 64, name: "Set of Four Coasters", price: 65.0, image: "https://images.unsplash.com/photo-1589362148113-5a371c638202?w=800", hoverImage: "https://images.unsplash.com/photo-1549488344-cbb6c144a469?w=800", isNew: true },
-  { id: 65, name: "Large Serving Spoon", price: 45.0, image: "https://images.unsplash.com/photo-1622225339310-858844445348?w=800", hoverImage: "https://images.unsplash.com/photo-1573555234562-395a123c51f4?w=800" },
-  { id: 66, name: "Pitcher and Tumbler Set", price: 420.0, image: "https://images.unsplash.com/photo-1586948833443-6d08b3981297?w=800", hoverImage: "https://images.unsplash.com/photo-1590642845347-8a620b7f64e2?w=800" },
-  { id: 67, name: "Rustic Soup Tureen", price: 380.0, image: "https://images.unsplash.com/photo-1544441892-794166f1e3be?w=800", hoverImage: "https://images.unsplash.com/photo-1617886922820-2415543c350a?w=800" },
-  { id: 68, name: "Modern Fruit Bowl", price: 290.0, image: "https://images.unsplash.com/photo-1585338894166-56356411e25d?w=800", hoverImage: "https://images.unsplash.com/photo-1507149833265-60c372daea22?w=800", badge: "SALE" },
-  { id: 69, name: "Set of Dessert Plates", price: 330.0, image: "https://images.unsplash.com/photo-1617997579789-540788d56bcf?w=800", hoverImage: "https://images.unsplash.com/photo-1596701955877-331c26189569?w=800" },
-  { id: 70, name: "Ceramic Berry Bowl", price: 120.0, image: "https://images.unsplash.com/photo-1596701955877-331c26189569?w=800", hoverImage: "https://images.unsplash.com/photo-1453946610015-188da02a3a5a?w=800" },
-  { id: 71, name: "Salt and Pepper Shakers", price: 90.0, image: "https://images.unsplash.com/photo-1609121731589-9a67140ace4f?w=800", hoverImage: "https://images.unsplash.com/photo-1616140449491-1774314c4424?w=800" },
-  { id: 72, name: "Honey Pot with Dipper", price: 110.0, image: "https://images.unsplash.com/photo-1620626309485-6905d6a2c146?w=800", hoverImage: "https://images.unsplash.com/photo-1585237623377-5095d10b7d60?w=800" },
-  { id: 73, name: "Stainless Steel Cutlery Set", price: 450.0, image: "https://images.unsplash.com/photo-1622089422521-51f4356a5061?w=800", hoverImage: "https://images.unsplash.com/photo-1594631252845-38278f654b41?w=800", isNew: true },
-  { id: 74, name: "Handwoven Placemat", price: 55.0, image: "https://images.unsplash.com/photo-1617802113945-813c050a41a4?w=800", hoverImage: "https://images.unsplash.com/photo-1558717614-61c1682b414f?w=800" },
-  { id: 75, name: "Napkin Ring Set", price: 85.0, image: "https://images.unsplash.com/photo-1611771142823-933e1a0b3f54?w=800", hoverImage: "https://images.unsplash.com/photo-1622225339310-858844445348?w=800" },
-
-  // Page 6
-  { id: 76, name: "Glass Water Carafe", price: 150.0, image: "https://images.unsplash.com/photo-1586948833443-6d08b3981297?w=800", hoverImage: "https://images.unsplash.com/photo-1573555234562-395a123c51f4?w=800" },
-  { id: 77, name: "Olive Oil Dispenser", price: 95.0, image: "https://images.unsplash.com/photo-1600271813155-213809229155?w=800", hoverImage: "https://images.unsplash.com/photo-1589362148113-5a371c638202?w=800" },
-  { id: 78, name: "Butter Dish", price: 70.0, image: "https://images.unsplash.com/photo-1589923188902-c43b611c06d8?w=800", hoverImage: "https://images.unsplash.com/photo-1622225339310-858844445348?w=800" },
-  { id: 79, name: "Three-Tiered Serving Stand", price: 320.0, image: "https://images.unsplash.com/photo-1588821101831-f565561a4b7f?w=800", hoverImage: "https://images.unsplash.com/photo-1586948833443-6d08b3981297?w=800", discount: "-10%" },
-  { id: 80, name: "Egg Cups (Set of 4)", price: 130.0, image: "https://images.unsplash.com/photo-1586948833443-6d08b3981297?w=800", hoverImage: "https://images.unsplash.com/photo-1544441892-794166f1e3be?w=800" },
-  { id: 81, name: "Gravy Boat", price: 160.0, image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800", hoverImage: "https://images.unsplash.com/photo-1585338894166-56356411e25d?w=800" },
-  { id: 82, name: "Small Prep Bowls", price: 190.0, image: "https://images.unsplash.com/photo-1606700013838-3486a43876e9?w=800", hoverImage: "https://images.unsplash.com/photo-1617997579789-540788d56bcf?w=800", isNew: true },
-  { id: 83, name: "Large Salad Servers", price: 80.0, image: "https://images.unsplash.com/photo-1515573406215-7e1e62c2f17e?w=800", hoverImage: "https://images.unsplash.com/photo-1596701955877-331c26189569?w=800" },
-  { id: 84, name: "Cake Stand with Dome", price: 280.0, image: "https://images.unsplash.com/photo-1563170425-3532c21d8b1e?w=800", hoverImage: "https://images.unsplash.com/photo-1453946610015-188da02a3a5a?w=800" },
-  { id: 85, name: "Wine Glass Set", price: 350.0, image: "https://images.unsplash.com/photo-1559190159-cb1b8314544b?w=800", hoverImage: "https://images.unsplash.com/photo-1616140449491-1774314c4424?w=800" },
-  { id: 86, name: "Whiskey Decanter", price: 400.0, image: "https://images.unsplash.com/photo-1619451998595-50d453b0270a?w=800", hoverImage: "https://images.unsplash.com/photo-1585237623377-5095d10b7d60?w=800" },
-  { id: 87, name: "Cocktail Shaker Set", price: 290.0, image: "https://images.unsplash.com/photo-1598991735737-7ac6b5713cba?w=800", hoverImage: "https://images.unsplash.com/photo-1594631252845-38278f654b41?w=800", badge: "GIFT IDEA" },
-  { id: 88, name: "Ice Bucket with Tongs", price: 180.0, image: "https://images.unsplash.com/photo-1601672537240-5e3474438317?w=800", hoverImage: "https://images.unsplash.com/photo-1558717614-61c1682b414f?w=800" },
-  { id: 89, name: "Bar Tool Set", price: 220.0, image: "https://images.unsplash.com/photo-1514362545857-3bc71d5a4d90?w=800", hoverImage: "https://images.unsplash.com/photo-1622225339310-858844445348?w=800" },
-  { id: 90, name: "Mortar and Pestle", price: 140.0, image: "https://images.unsplash.com/photo-1581584427349-8c249a5023a1?w=800", hoverImage: "https://images.unsplash.com/photo-1573555234562-395a123c51f4?w=800" }
-];
-
 export function ProductsPage() {
   const [viewMode, setViewMode] = useState("grid3");
   const [sortBy, setSortBy] = useState("default");
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 15; // Set to 15 for 3 rows of 5 products
-  const productsSectionRef = useRef(null); // Create a ref
+  const productsPerPage = 15;
+  const productsSectionRef = useRef(null);
 
   const gridClass = {
     list: "grid-cols-1",
@@ -172,7 +70,6 @@ export function ProductsPage() {
     if (productsSectionRef.current) {
       productsSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    // In a real app, you would fetch new products for the selected page here
   };
 
   const sortedProducts = useMemo(() => {
@@ -188,7 +85,6 @@ export function ProductsPage() {
         sorted.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case "newest":
-        // A simple way to simulate "newest" is to sort by isNew flag, then by ID descending
         sorted.sort((a, b) => {
           if (a.isNew && !b.isNew) return -1;
           if (!a.isNew && b.isNew) return 1;
@@ -196,8 +92,7 @@ export function ProductsPage() {
         });
         break;
       default:
-        // Default sort by ID
-        sorted.sort((a,b) => a.id - b.id);
+        sorted.sort((a, b) => a.id - b.id);
         break;
     }
     return sorted;
@@ -211,7 +106,7 @@ export function ProductsPage() {
 
   return (
     <div>
-      {/* Category Images with Overlay Text */}
+      {/* Category Images */}
       <div className="w-full px-4 lg:px-8 py-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
           {categoryImages.map((category) => (
@@ -235,150 +130,122 @@ export function ProductsPage() {
 
       {/* Products Section */}
       <div ref={productsSectionRef} className="w-full px-8 lg:px-16 py-16 scroll-mt-20">
-        {/* Header */}
-        <div className="mb-12">
-          <h2 className="mb-2">Products</h2>
-          <p className="text-muted-foreground">15 of 78 results</p>
-        </div>
-      
-      <div className="w-full px-4 lg:px-8 py-8">
-        {/* Filters and View Options */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
-          <div>
-            <h2
-              className="text-2xl"
-              style={{
-                fontFamily: "Playfair Display, serif",
-                fontWeight: 400,
-                fontSize: "50px",
-              }}
-            >
-              Products
-            </h2>
-            <p className="text-muted-foreground text-sm">
-              Showing {paginatedProducts.length} of {products.length} results
-            </p>
+        <div className="w-full">
+          {/* Filters and View Options */}
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
+            <div>
+              <h2 className="text-2xl" style={{ fontFamily: "Playfair Display, serif", fontWeight: 400, fontSize: "70px" }}>
+                Products
+              </h2>
+              <p className="text-muted-foreground text-sm">
+                Showing {paginatedProducts.length} of {products.length} results
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 border border-border rounded p-1">
+                <button
+                  onClick={() => setViewMode("grid2")}
+                  className={`p-2 rounded transition-colors ${
+                    viewMode === "grid2" ? "bg-muted" : "hover:bg-muted/50"
+                  }`}
+                >
+                  <LayoutGrid className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode("grid3")}
+                  className={`p-2 rounded transition-colors ${
+                    viewMode === "grid3" ? "bg-muted" : "hover:bg-muted/50"
+                  }`}
+                >
+                  <Grid3x3 className="w-4 h-4" />
+                </button>
+              </div>
+              <Button
+                variant="outline"
+                className="gap-2 h-10"
+                onClick={() => setIsFiltersOpen(true)}
+              >
+                <SlidersHorizontal className="w-4 h-4" />
+                Filters
+              </Button>
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-[180px] h-10">
+                  <SelectValue placeholder="Default sorting" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="default">Default sorting</SelectItem>
+                  <SelectItem value="newest">Newest First</SelectItem>
+                  <SelectItem value="price-low">Price: Low to High</SelectItem>
+                  <SelectItem value="price-high">Price: High to Low</SelectItem>
+                  <SelectItem value="name">Name: A to Z</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 border border-border rounded p-1">
+
+          {/* Products Grid */}
+          <div className={`grid ${gridClass} gap-4`}>
+            {paginatedProducts.map((product) => (
+              <div key={product.id} className="relative">
+                {product.badge && (
+                  <div className="absolute top-2 left-2 bg-white border border-[#d87f4a] text-[#d87f4a] px-2 py-0.5 text-xs z-10">
+                    {product.badge}
+                  </div>
+                )}
+                {product.discount && (
+                  <div className="absolute top-2 left-2 bg-[#d87f4a] text-white px-2 py-0.5 text-xs z-10">
+                    {product.discount}
+                  </div>
+                )}
+                <ProductCard product={product} />
+                {product.originalPrice && (
+                  <p className="text-sm text-muted-foreground line-through mt-1">
+                    ${product.originalPrice.toFixed(2)}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Pagination */}
+          <div className="flex items-center justify-center gap-2 mt-16">
+            {currentPage > 1 && (
               <button
-                onClick={() => setViewMode("grid2")}
-                className={`p-2 rounded transition-colors ${
-                  viewMode === "grid2" ? "bg-muted" : "hover:bg-muted/50"
+                onClick={() => handlePageChange(currentPage - 1)}
+                className="px-4 h-10 border border-border hover:bg-muted transition-colors flex items-center justify-center gap-2"
+              >
+                ← Previous
+              </button>
+            )}
+            {[...Array(totalPages)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => handlePageChange(i + 1)}
+                className={`w-10 h-10 flex items-center justify-center transition-colors ${
+                  currentPage === i + 1
+                    ? "bg-black text-white"
+                    : "border border-border hover:bg-muted"
                 }`}
               >
-                <LayoutGrid className="w-4 h-4" />
+                {i + 1}
               </button>
+            ))}
+            {currentPage < totalPages && (
               <button
-                onClick={() => setViewMode("grid3")}
-                className={`p-2 rounded transition-colors ${
-                  viewMode === "grid3" ? "bg-muted" : "hover:bg-muted/50"
-                }`}
+                onClick={() => handlePageChange(currentPage + 1)}
+                className="px-4 h-10 border border-border hover:bg-muted transition-colors flex items-center justify-center gap-2"
               >
-                <Grid3x3 className="w-4 h-4" />
+                Next →
               </button>
-            </div>
-            <Button
-              variant="outline"
-              className="gap-2 h-10"
-              onClick={() => setIsFiltersOpen(true)}
-            >
-              <SlidersHorizontal className="w-4 h-4" />
-              Filters
-            </Button>
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-[180px] h-10">
-                <SelectValue placeholder="Default sorting" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="default">Default sorting</SelectItem>
-                <SelectItem value="newest">Newest First</SelectItem>
-                <SelectItem value="price-low">Price: Low to High</SelectItem>
-                <SelectItem value="price-high">Price: High to Low</SelectItem>
-                <SelectItem value="name">Name: A to Z</SelectItem>
-              </SelectContent>
-            </Select>
+            )}
           </div>
         </div>
-
-        {/* Products Grid */}
-        <div className={`grid ${gridClass} gap-4`}>
-          {paginatedProducts.map((product) => (
-            <div key={product.id} className="relative">
-              {product.badge && (
-                <div className="absolute top-2 left-2 bg-white border border-[#d87f4a] text-[#d87f4a] px-2 py-0.5 text-xs z-10">
-                  {product.badge}
-                </div>
-              )}
-              {product.discount && (
-                <div className="absolute top-2 left-2 bg-[#d87f4a] text-white px-2 py-0.5 text-xs z-10">
-                  {product.discount}
-                </div>
-              )}
-
-              <ProductCard product={product} />
-
-              {product.originalPrice && (
-                <p className="text-sm text-muted-foreground line-through mt-1">
-                  ${product.originalPrice.toFixed(2)}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Pagination */}
-        <div className="flex items-center justify-center gap-2 mt-16">
-           <br />
-          <hr />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          {/* Previous Button */}
-          {currentPage > 1 && (
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              className="px-4 h-10 border border-border hover:bg-muted transition-colors flex items-center justify-center gap-2"
-            >
-              ← Previous
-            </button>
-          )}
-
-          {/* Page Number Buttons */}
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              onClick={() => handlePageChange(i + 1)}
-              className={`w-10 h-10 flex items-center justify-center transition-colors ${
-                currentPage === i + 1
-                  ? "bg-black text-white"
-                  : "border border-border hover:bg-muted"
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-
-          {/* Next Button */}
-          {currentPage < totalPages && (
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              className="px-4 h-10 border border-border hover:bg-muted transition-colors flex items-center justify-center gap-2"
-            >
-              Next →
-            </button>
-          )}
-        </div>
-      </div> {/* This closes the div that contains filters, grid, and pagination */}
-      </div> {/* Add this closing div for the productsSectionRef div */}
+      </div>
 
       <FiltersSidebar
         isOpen={isFiltersOpen}
         onClose={() => setIsFiltersOpen(false)}
       />
-
       <StayInspired />
       <SectionDivider />
     </div>

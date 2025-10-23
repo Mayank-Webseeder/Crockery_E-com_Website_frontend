@@ -6,15 +6,18 @@ import { cn } from "./ui/utils";
 import { useCart } from "../context/CartContext";
 import { ProfileDropdown } from './ProfileDropdown';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useSearch } from '../context/SearchContext'; // Import the useSearch hook
 
 export function Header({ onCartOpen }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
+  const [localSearchTerm, setLocalSearchTerm] = useState(''); // State for the search input
   const { totalItems } = useCart();
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { performSearch } = useSearch(); // Get the search function from context
 
   const navLinkClass = (path) =>
     `transition-all duration-300 cursor-pointer whitespace-nowrap ${
@@ -29,6 +32,16 @@ export function Header({ onCartOpen }) {
     if (path !== "/products") {
       setIsProductsMenuOpen(false);
     }
+  };
+
+  // Function to handle the search submission
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (!localSearchTerm.trim()) return; // Don't search if the input is empty
+    performSearch(localSearchTerm);
+    navigate('/search-results');
+    setLocalSearchTerm(''); // Clear the input
+    setIsSearchOpen(false); // Close the search bar
   };
 
   return (
@@ -68,13 +81,16 @@ export function Header({ onCartOpen }) {
 
           {/* Right Group */}
           <div className="flex items-center justify-end gap-4 lg:flex-1">
-            <div className={cn("flex items-center gap-2 transition-all duration-300", isSearchOpen ? "w-36" : "w-0")}>
+            {/* Search form replaces the simple div */}
+            <form onSubmit={handleSearchSubmit} className={cn("flex items-center gap-2 transition-all duration-300", isSearchOpen ? "w-36" : "w-0")}>
               <Input
                 type="search"
                 placeholder="Search..."
+                value={localSearchTerm}
+                onChange={(e) => setLocalSearchTerm(e.target.value)}
                 className={cn("h-9 transition-opacity duration-300", isSearchOpen ? "opacity-100" : "opacity-0")}
               />
-            </div>
+            </form>
             <Search
               className="w-5 h-5 cursor-pointer hover:text-[#d87f4a] transition-colors flex-shrink-0"
               onClick={() => setIsSearchOpen(!isSearchOpen)}

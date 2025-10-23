@@ -4,6 +4,10 @@ import { useState } from "react";
 import { useCart } from "../context/CartContext"; // Step 1: Import the useCart hook
 
 export function ProductCard({ product }) { // Changed props to accept the whole product object
+  if (!product) {
+    return null; // or a placeholder/loading state
+  }
+  
   const { name, price, image, hoverImage, isNew } = product; // Destructure product object
   const [isHovered, setIsHovered] = useState(false);
   const { addToCart } = useCart(); // Step 2: Get the addToCart function from context
