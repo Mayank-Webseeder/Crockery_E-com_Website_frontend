@@ -6,7 +6,7 @@ function LargeCategoryCard({ title, image, onClick }) {
       onClick={onClick}
       className="group cursor-pointer relative overflow-hidden aspect-[4/5]"
     >
-      <ImageWithFallback
+      <img
         src={image}
         alt={title}
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -24,16 +24,16 @@ function LargeCategoryCard({ title, image, onClick }) {
 
 const categories = [
   {
-    title: "Tableware",
-    image: "/tableware1.webp",
+    title: "Bone China Ceramic Dinnerware",
+    image: "/serving.jpg",
   },
   {
-    title: "Kitchenware",
+    title: "Brass Dinner Sets",
     image: "/kitchenware.webp",
   },
   {
-    title: "Serving Pieces",
-    image: "/serving.jpg",
+    title: "Gold-Plated Collection",
+    image: "/tableware1.webp",
   },
 ];
 
