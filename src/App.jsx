@@ -25,7 +25,7 @@ import { SearchResultsPage } from './pages/SearchResultsPage';
 const AuthLayout = () => {
   return (
     <div className="auth-layout-container">
-      <video
+      {/* <video
         autoPlay
         loop
         muted
@@ -34,7 +34,13 @@ const AuthLayout = () => {
       >
         <source src="/background-video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> */}
+      <div
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1727257050264-33a4f5f0982a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1287')"
+        }}
+      ></div>
       <main className="z-10"> {/* Ensure content is above the video overlay */}
         <Outlet />
       </main>
@@ -73,36 +79,36 @@ export default function App() {
     <Router>
       <AuthProvider>
         <SearchProvider>
-        <CartProvider>
-          <ScrollToTop />
-          <Routes>
-            {/* Routes with only the form */}
-            <Route element={<AuthLayout />}>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/lost-password" element={<LostPasswordPage />} />
-            </Route>
+          <CartProvider>
+            <ScrollToTop />
+            <Routes>
+              {/* Routes with only the form */}
+              <Route element={<AuthLayout />}>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route path="/lost-password" element={<LostPasswordPage />} />
+              </Route>
 
-            {/* Routes with Header and Footer */}
-            <Route element={<MainLayout onCartOpen={handleCartOpen} onFiltersOpen={handleFiltersOpen} />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/products" element={<ProductsPage onFiltersOpen={handleFiltersOpen} />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/orders" element={<OrdersPage />} />
-              <Route path="/search-results" element={<SearchResultsPage />} />
-            </Route>
-          </Routes>
-          <CartSidebar
-            isOpen={isCartSidebarOpen}
-            onClose={handleCartClose}
-          />
-          <FiltersSidebar
-            isOpen={isFiltersSidebarOpen}
-            onClose={handleFiltersClose}
-          />
-        </CartProvider>
+              {/* Routes with Header and Footer */}
+              <Route element={<MainLayout onCartOpen={handleCartOpen} onFiltersOpen={handleFiltersOpen} />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/products" element={<ProductsPage onFiltersOpen={handleFiltersOpen} />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/orders" element={<OrdersPage />} />
+                <Route path="/search-results" element={<SearchResultsPage />} />
+              </Route>
+            </Routes>
+            <CartSidebar
+              isOpen={isCartSidebarOpen}
+              onClose={handleCartClose}
+            />
+            <FiltersSidebar
+              isOpen={isFiltersSidebarOpen}
+              onClose={handleFiltersClose}
+            />
+          </CartProvider>
         </SearchProvider>
       </AuthProvider>
     </Router>

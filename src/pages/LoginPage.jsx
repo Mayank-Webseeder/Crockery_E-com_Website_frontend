@@ -5,6 +5,7 @@ import { Label } from "../components/ui/label";
 import { Checkbox } from "../components/ui/checkbox";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from '../context/AuthContext';
+import { ArrowLeft } from 'lucide-react';
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,9 +19,22 @@ export function LoginPage() {
     navigate('/');
   };
 
+  const handleBackToHome = () => {
+    navigate('/');
+  };
+
   return (
-    <div className="max-w-md w-full bg-background p-8 lg:p-12 rounded-lg shadow-lg border border-gray-200">
-      <div className="mb-8 text-center">
+    <div className="w-full max-w-md sm:max-w-lg bg-background p-8 lg:p-12 rounded-lg shadow-lg border border-gray-200 relative">
+      {/* Back to Home Button */}
+      <button
+        onClick={handleBackToHome}
+        className="absolute top-4 left-4 flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors cursor-pointer"
+      >
+        <ArrowLeft size={16} />
+        <span className="text-sm">Back to Home</span>
+      </button>
+
+      <div className="mb-8 text-center mt-8">
         <h1 className="text-4xl mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
           Login
         </h1>
